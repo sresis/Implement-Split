@@ -27,6 +27,23 @@ For example:
 
 def split(astring, splitter):
     """Split a string by splitter and return list of splits."""
+    # if :len(n) equals the splitter
+    # find indexes of splitter
+    splitter_idx = []
+    i = 0
+    while i < len(astring) - len(splitter) + 1:
+        if astring[i:(i + len(splitter))] == splitter:
+            splitter_idx.append(i)
+        i += 1
+    # take everything before each split index
+    i = 0
+    start_val = 0
+    final_list = []
+    for i in splitter_idx:
+        final_list.append(astring[start_val:i])
+        start_val = i + len(splitter)
+    final_list.append(astring[start_val:])
+    return final_list
 
 
 if __name__ == '__main__':
